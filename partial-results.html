@@ -1,0 +1,122 @@
+
+    <style>
+    body {
+        margin:0px;
+        padding:0px;
+    }
+        table {
+            width:100%;
+            font-weight: bold;
+            background-color: #0d0d0d;
+        }
+        .odd {
+            background-color:#006699;
+            margin-bottom:4px;
+            border-bottom: 1px solid #0d0d0d;
+        }
+        .even {
+            background-color:#003366;
+            margin-bottom:4px;
+            border-bottom: 1px solid #0d0d0d;
+        }
+        .ignodd {
+            margin-bottom:4px;
+            border-bottom: 1px solid #0d0d0d;
+            background-color: #027d54;
+        }
+        .igneven {  
+            margin-bottom:4px;
+            border-bottom: 1px solid #0d0d0d;
+            background-color: #005237;
+        }
+        .close {
+            float:right;
+        }
+        table tr:hover {
+            background-color:#2E9E96;
+        }
+        table img {
+            margin-bottom: 2px;
+        }
+        form a {
+            float:right;
+            color:white;
+            margin:5px;
+        }
+        form a:visited{
+            color:white;
+        }
+        @keyframes repot {
+            0% {background-color:inherit;}
+            50% {background-color:red;}
+            100% {background-color:inherit;}
+        }
+        .reported {
+            animation-name: repot;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: reverse;
+        }
+        @keyframes lastseen {
+            0% {opacity: 1;}
+            50% {opacity: 0.5;}
+            100% {opacity: 1;}
+        }
+        .watching {
+            animation-name: lastseen;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: reverse;
+        }
+        .name a:visited {
+            color:white;
+        }
+    </style>
+
+<div infinite-scroll="loadNext()" threshold="100" can-load="load">
+
+<table>
+    <thead>
+        <th ng-click="predicate = 'date'; reverse=!reverse">Date</th>
+        <th ng-click="predicate = 'player1'; reverse=!reverse">Player1</th>
+        <th ng-click="predicate =  'player2'; reverse=!reverse">Player2</th>
+        <th>Match Up</th>
+        <th>Link</th>
+        <th>Report</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat='dbresult in dbresults | orderBy:predicate:reverse'   ng-class="{'reported': repMID == dbresult.matchid, 'watching': watching == dbresult.matchid, 'odd': $index%2 == 1, 'even': $index%2 == 0, 'ignodd': $index%2 == 1 && dbresult.version == 2, 'igneven': $index%2 == 0 && dbresult.version == 2}">
+        <td class='expandsm'>{{dbresult.date}}
+            </br>
+            <img ng-if='dbresult.version == 2' src='matchbg2.png'/>
+        </td>
+        <td class='name'><a href='http://www.climax-art.com/#/any/any/0/{{dbresult.player1}}/any/any/0/NONE/0/any'>{{dbresult.player1}}</a> <br />
+        ({{dbresult.grade1 | number}}m)</td>
+        
+        <td class='name'><a href='http://www.climax-art.com/#/any/any/0/{{dbresult.player2}}/any/any/0/NONE/0/any'>{{dbresult.player2}}</a> <br />
+        ({{dbresult.grade2 | number}}m)</td>
+        <td> <div class='comb'><img src='{{selectImg(dbresult.character1)}}' class='char' alt='{{dbresult.character1}}' tooltip="{{dbresult.character1}}"/>
+             <img src='{{selectAImg(dbresult.assist1)}}' class='assist' alt='{{dbresult.assist1}}' tooltip="{{dbresult.assist1}}" /> </div>
+             vs. 
+             <div class='comb'><img src='{{selectImg(dbresult.character2)}}' class='char' alt='{{dbresult.character2}}' tooltip="{{dbresult.character2}}"/>
+             <img src='{{selectAImg(dbresult.assist2)}}' class='assist' alt='{{dbresult.assist2}}' tooltip="{{dbresult.assist2}}" /> </div>
+        </td>
+        
+        <td><a href='{{dbresult.link}}' target="_blank" ng-click='logWatch(dbresult.matchid)'>Watch</a></td>
+        <td><a href="" ng-click="newfunction(dbresult.matchid)"><img src='char/report.png'></img></a></td>
+        </tr>
+    </tbody>
+
+</table>
+<div class='report' ng-show='reportup'>
+    <button class='buttonstyle close' ng-click='reportup = !reportup; repMID = -1'>X</button>
+    <form ng-submit='submitReport()'>
+        
+        <p>What's wrong with the match info?</p>
+        <input type='text' size='50' ng-model='reason' />
+        <input type='submit' value='Submit' />
+    </br>
+        {{reportresponse}}
+    </form>
+</div>
+</div>

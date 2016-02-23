@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app='app'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="favicon.png" type="image/png" rel="shortcut icon" />
+
+<link rel='stylesheet' media='screen and (max-width: 700px)' href='narrow.css' />
+<link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 900px)' href='medium.css' />
+<link rel='stylesheet' media='screen and (min-width: 901px)' href='wide.css' />
+
+<style>
+
+</style>
+<title>CLIMAX-ART - A Video Database for Dengeki Bunko Fighting Climax!</title>
+</head>
+
+<body ng-controller='uniController' id='bg'>
+    <div class='sidebar'>
+        <span class='head'>About</span>
+        <p> CLIMAX-ART is a video database for Dengeki Bunko Fighting Climax developed by:
+        <ul>
+        <li><a href='https://twitter.com/Tsuntenshi' target='_blank'>Tsuntenshi</a>: Graphic Designer, Transcriber, Uploader</li>
+        <li><a href='https://twitter.com/Kieofire' target='_blank'> Logan</a>: Transcriber </li>
+        <li><a href='https://twitter.com/MeltyMedia' target='_blank'> Butterfree</a>: Transcriber, Uploader, DP Lover</li>
+        <li><a href='https://twitter.com/ch_breadsticks' target='_blank'> Breadsticks</a>: Transcriber</li>
+        <li><a href='https://twitter.com/goddamnpete' target='_blank'> Pete</a>: Transcriber, Coder </li>
+        </ul>
+    </div>
+<div class='stats'>
+    <a href='stats.php'>Statistics</a>
+</div>
+<div class="container-fluid">
+    <nav class='col-xs-12 col-md-5'>
+    <form>
+    	<fieldset>
+            <h1> SEARCH FILTER </h1>
+            <div class='form'>
+    		  <select name='char1' id='c1' ng-model='c1' placeholder='Character' width='80'>  
+                        <option selected value='any'>Character </option>
+                        <option value='Asuna'>Asuna</option>
+                        <option value='Akira'>Akira Yuki</option>
+                        <option value='Emi'>Emi</option>
+                        <option value='Kirino'>Kirino Kosaka</option>
+                        <option value='Misaka'>Mikoto Misaka</option>
+                        <option value='Kirito'>Kirito</option>
+                        <option value='Kuroko'>Kuroko Shirai</option>               
+                        <option value='Kuroyukihime'>Kuroyukihime</option>
+                        <option value='Miyuki'>Miyuki Shiba</option>
+                        <option value='Quenser'>Quenser</option>
+                        <option value='Rentaro'>Rentaro Satomi</option>
+                        <option value='Selvaria'>Selvaria Bles</option>
+                        <option value='Shana'>Shana</option>
+                        <option value='Shizuo'>Shizuo Heiwajima</option>
+                        <option value='Taiga'>Taiga Aisaka</option>
+                        <option value='Tatsuya'>Tatsuya Shiba</option>
+                        <option value='Tomoka'>Tomoka Minato</option>
+                        <option value='Yukina'>Yukina Himeragi</option>
+        		</select>
+                <br />
+                <select ng-model='a1'>
+                    <option value='any' selected>Assist</option>
+                    <option value='Accelerator'>Accelerator</option>
+                    <option value='Alicia'>Alicia</option>
+                    <option value='Boogiepop'>Boogiepop</option>
+                    <option value='Celty'>Celty</option>
+                    <option value='Dokuro-chan'>Dokuro-chan</option>
+                    <option value='Enju'>Enju</option>
+                    <option value='Erio'>Erio</option>
+                    <option value='Froleytia'>Froleytia</option>
+                    <option value='Haruyuki'>Haruyuki</option>
+                    <option value='Hinata'>Hinata</option>
+                    <option value='Holo'>Holo</option>
+                    <option value='Iriya'>Iriya</option>
+                    <option value='Izaya'>Izaya</option>
+                    <option value='Kino'>Kino</option>
+                    <option value='Koko'>Koko</option>
+                    <option value='Kojou'>Kojou</option>
+                    <option value='Kuroneko'>Kuroneko</option>
+                    <option value='Leafa'>Leafa</option>
+                    <option value='Mashiro'>Mashiro</option>
+                    <option value='Miyuki'>Miyuki</option>
+                    <option value='Pai'>Pai</option>
+                    <option value='Ryuuji'>Ryuuji</option>
+                    <option value='Sadao'>Sadao</option>
+                    <option value='Tatsuya'>Tatsuya</option>
+                    <option value='Asama'>Tomo Asama</option>
+                    <option value='Touma'>Touma</option>
+                    <option value='Uiharu'>Uiharu</option>
+                    <option value='Wilhelmina'>Wilhelmina</option>
+                </select>
+                <br />
+                <input type='number' placeholder='Min. Grade' step='0.1' min='0' ng-model='g1'/>
+                <br />
+                <input type='text' placeholder='Player' ng-model='p1'/>
+                <br />
+            </div>
+            <div class='form'>
+            <select name='char1' id='c2' ng-model='c2' placeholder='Character'>  
+                        <option selected value='any'>Character </option>
+                        <option value='Asuna'>Asuna</option>
+                        <option value='Akira'>Akira Yuki</option>
+                        <option value='Emi'>Emi</option>
+                        <option value='Kirino'>Kirino Kosaka</option>
+                        <option value='Misaka'>Mikoto Misaka</option>
+                        <option value='Kirito'>Kirito</option>
+                        <option value='Kuroko'>Kuroko Shirai</option>                    
+                        <option value='Kuroyukihime'>Kuroyukihime</option>
+                        <option value='Miyuki'>Miyuki Shiba</option>
+                        <option value='Quenser'>Quenser</option>
+                        <option value='Rentaro'>Rentaro Satomi</option>
+                        <option value='Selvaria'>Selvaria Bles</option>
+                        <option value='Shana'>Shana</option>
+                        <option value='Shizuo'>Shizuo Heiwajima</option>
+                        <option value='Taiga'>Taiga Aisaka</option>
+                        <option value='Tatsuya'>Tatsuya Shiba</option>
+                        <option value='Tomoka'>Tomoka Minato</option>
+                        <option value='Yukina'>Yukina Himeragi</option>
+            </select>
+            <br />
+            <select ng-model='a2'>
+                <option value='any' selected>Assist</option>
+                   <option value='any' selected>Assist</option>
+                    <option value='Accelerator'>Accelerator</option>
+                    <option value='Alicia'>Alicia</option>
+                    <option value='Boogiepop'>Boogiepop</option>
+                    <option value='Celty'>Celty</option>
+                    <option value='Dokuro-chan'>Dokuro-chan</option>
+                    <option value='Enju'>Enju</option>
+                    <option value='Erio'>Erio</option>
+                    <option value='Froleytia'>Froleytia</option>
+                    <option value='Haruyuki'>Haruyuki</option>
+                    <option value='Hinata'>Hinata</option>
+                    <option value='Holo'>Holo</option>
+                    <option value='Iriya'>Iriya</option>
+                    <option value='Izaya'>Izaya</option>
+                    <option value='Kino'>Kino</option>
+                    <option value='Koko'>Koko</option>
+                    <option value='Kojou'>Kojou</option>
+                    <option value='Kuroneko'>Kuroneko</option>
+                    <option value='Leafa'>Leafa</option>
+                    <option value='Mashiro'>Mashiro</option>
+                    <option value='Miyuki'>Miyuki</option>
+                    <option value='Pai'>Pai</option>
+                    <option value='Ryuuji'>Ryuuji</option>
+                    <option value='Sadao'>Sadao</option>
+                    <option value='Tatsuya'>Tatsuya</option>
+                    <option value='Asama'>Tomo Asama</option>
+                    <option value='Touma'>Touma</option>
+                    <option value='Uiharu'>Uiharu</option>
+                    <option value='Wilhelmina'>Wilhelmina</option>
+            </select>
+            <br />
+            <input type='number' placeholder='Min. Grade' step='0.1' min='0' ng-model='g2'/>
+            <br />
+            <input type='text' placeholder='Player' ng-model='p2'/>
+            <br />
+            </div>
+            <br/>
+            <select ng-model='vers'>
+                <option value='0' selected>Version</option>
+                <option value='1'>DFC</option>
+                <option value='2'>IGNITION</option>
+            </select>
+            <br/>
+            <select ng-model='winner'>
+                <option value='0' selected>Winner</option>
+                <option value='1'>1st slot</option>
+                <option value='2'>2nd slot</option>
+                </select>
+            <br />
+            <select ng-model='locale'>
+                <option selected value='any'>Local / Arcade</option>
+                <option ng-repeat="arcade in arcades track by $index" value='{{arcade.locale}}'>{{arcade.locale}}</option>
+            </select>
+                 <br />
+
+            <button ng-click='loadMatches()'>Search</button>
+            <button ng-click='resetFilters()'>Reset</button>
+    		</fieldset>
+    </form>
+    </nav>
+
+    <div class="partial-results col-xs-12 col-md-7" infinite-scroll="loadNext()" threshold="500" can-load="load">
+        <div ng-view></div>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65118422-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="uniController.js"></script>
+    <script src="ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script type="text/javascript" src="infinite-scroll.js"></script>
+</div>
+</body>
+</html>
